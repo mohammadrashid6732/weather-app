@@ -1,3 +1,5 @@
+import { showModal } from "./modal.js";
+
 const BASE_URL = "https://api.openweathermap.org/data/2.5";
 const API_KEY = "8a07319f66515d38204ea25ece2ab72b";
 
@@ -19,19 +21,20 @@ const getWeatherData = async (type, data) => {
       }
       break;
     default:
-      url = `${BASE_URL}/weather?q=malard&appid=${API_KEY}&units=metric `;
+      url = `${BASE_URL}/weather?q=tehran&appid=${API_KEY}&units=metric `;
+      break;
   }
   try {
     const response = await fetch(url);
-    const json = response.json();
-    return json;
-    // if (+json.code === 200) {
-    //   return json;
-    // } else {
-    //   console.log(json.message);
-    // }
+    const json = await response.json();
+    console.log(json);
+    if (+json.cod === 200) {
+      return json;
+    } else {
+      showModal(json.message);
+    }
   } catch (error) {
-    console.log("An error occurred when fetching data:", error);
+    showModal("An error occurred when fetching data:");
   }
 };
 

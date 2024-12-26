@@ -122,3 +122,90 @@ body {
 #forecast span {
   color: var(--color-secondary);
 }
+#modal {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+#modal > div {
+  background: #fff;
+  width: 400px;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  animation: slideIn 0.3s ease-in-out;
+}
+
+#modal span {
+  background-color: var(--color-error);
+  color: #fff;
+  font-weight: 900;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+  padding: 10px 20px;
+  border-radius: 10px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+#modal span:hover {
+  transform: scale(1.1);
+  background-color: #d32f2f;
+}
+
+#modal p {
+  margin-top: 20px;
+  color: var(--color-error);
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+#loader {
+  width: 100px;
+  height: 100px;
+  border: 7px solid var(--color-primary);
+  border-bottom-color: transparent;
+  border-top-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  animation: rotation 0.8s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
